@@ -1,28 +1,28 @@
-# 42 Pipex - Mandatory Part
 
-NAME    := pipex
-CC      := cc
-CFLAGS  := -Wall -Wextra -Werror
-AR      := ar rcs
-RM      := rm -f
+NAME = pipex
+SRCS = src/pipex.c srcpipex_util.c
 
-SRCS    := src/main.c src/exec.c src/path.c src/split.c src/utils.c src/error.c
-OBJS    := $(SRCS:.c=.o)
-INCS    := -I include
+LIBFT_DIR = ./Libft/
+LIBFT = $(LIBFT_DIR)/libft.a
+
+OBJS = $(SRCS:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
-src/%.o: src/%.c include/pipex.h
-	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
-
+bonus: $(OBJS) $(BONUS_OBJS)
+	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+	
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

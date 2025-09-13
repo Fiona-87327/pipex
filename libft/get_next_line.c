@@ -112,27 +112,3 @@ char	*get_next_line(int fd)
 	free(line);
 	return (tmp);
 }
-
-#include <stdio.h>
-
-int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = open("test.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("Line: >%s<", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("Line: >%s<", line);
-	free(line);
-	// line = get_next_line(fd);
-	// printf("Line: >%s<", line);
-	// free(line);
-	// line = get_next_line(fd);
-	// printf("Line: >%s<", line);
-	// free(line);
-	close(fd);
-	return (0);
-}

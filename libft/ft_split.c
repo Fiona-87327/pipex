@@ -93,20 +93,3 @@ char	**ft_split(char const *s, char c)
 	result[i] = NULL;
 	return (result);
 }
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char **res = ft_split("Wang-ji-yan", '-');
-
-// 	int	i = 0;
-// 	while (res && res[i])
-// 	{
-// 		printf("Word %d: \"%s\"\n", i, res[i]);
-// 		free(res[i]);
-// 		i++;
-// 	}
-// 	free(res);
-// 	return (0);
-// }

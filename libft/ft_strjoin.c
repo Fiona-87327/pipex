@@ -33,12 +33,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(s1s2_r, s2, s1_len + s2_len + 1);
 	return (s1s2_r);
 }
-// #include <stdio.h>
-// int main(void)
-// {
-//     char *s1 = "Heilbronn 42";
-//     char *s2 ="**";
-
-//     printf("%s", ft_strjoin(s1, s2));
-//     return 0;
-// }

@@ -62,7 +62,7 @@ void	pp_child1(int *pipe_fd, char **argv, char **envp)
 	close(infile);
 	close(pipe_fd[READ_FD]);
 	close(pipe_fd[WRITE_FD]);
-	pp_execute(argv[2], envp);
+	pip_exec_cmd(argv[2], envp);
 }
 
 void	pp_child2(int *pipe_fd, char **argv, char **envp)
@@ -79,5 +79,5 @@ void	pp_child2(int *pipe_fd, char **argv, char **envp)
 	close(outfile);
 	close(pipe_fd[READ_FD]);
 	close(pipe_fd[WRITE_FD]);
-	pp_execute(argv[3], envp);
+	pip_exec_cmd(argv[3], envp);
 }

@@ -76,7 +76,7 @@ void    pip_exec_cmd(char *cmd, char **envp)
     args = ft_split(cmd, ' ');
     if (!args)
         p_error();
-    path = p_get_path(args[0], envp);
+    path = pip_get_path(args[0], envp);
     if (!path)
     {
         ft_putstr_fd("Error: Command not found: ", 2);

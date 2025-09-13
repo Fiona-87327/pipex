@@ -27,7 +27,7 @@
 
 void	p_error(void);
 void    ft_free_split(char **strs);
-void	pp_execute(char *cmd, char **envp);
+void    pip_exec_cmd(char *cmd, char **envp);
 void	pp_pipex(char **argv, char **envp);
 char    *p_get_path(char *cmd, char **envp);
 int		main(int argc, char **argv, char **envp);

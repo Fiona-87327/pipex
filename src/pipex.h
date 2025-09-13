@@ -13,15 +13,23 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include "../libft/libft.h"
+# include <errno.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <unistd.h>
 
-typedef struct s_pipex
-{
-	int		fd_in;
-	int		fd_out;
-	char	**cmds;
-}	t_pipex;
+# define READ_FD 0
+# define WRITE_FD 1
+
+void	p_error(void);
+void	pp_execute(char *cmd, char **envp);
+void	pp_pipex(char **argv, char **envp);
+int		main(int argc, char **argv, char **envp);
+void	pp_child1(int *pipe_fd, char **argv, char **envp);
+void	pp_child2(int *pipe_fd, char **argv, char **envp);
 
 #endif

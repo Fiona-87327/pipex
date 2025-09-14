@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiyawang <jiyawang@student.42.fr>          #+#  +:+       +#+        */
+/*   By: jiyan <jiyan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-13 11:43:54 by jiyawang          #+#    #+#             */
-/*   Updated: 2025-09-13 11:43:54 by jiyawang         ###   ########.fr       */
+/*   Created: 2025/09/13 11:43:54 by jiyawang          #+#    #+#             */
+/*   Updated: 2025/09/14 10:15:38 by jiyan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # define WRITE_FD 1
 
 void	p_error(void);
-void    ft_free_split(char **strs);
-void    pip_exec_cmd(char *cmd, char **envp);
+void	ft_free_split(char **strs);
+void	pip_exec_cmd(char *cmd, char **envp);
 void	pp_pipex(char **argv, char **envp);
-char    *p_get_path(char *cmd, char **envp);
+char	*pip_get_path(char *cmd, char **envp);
 int		main(int argc, char **argv, char **envp);
-void	pp_child1(int *pipe_fd, char **argv, char **envp);
-void	pp_child2(int *pipe_fd, char **argv, char **envp);
+void	pp_child(int *pipe_fd, char **argv, char **envp);
+void	pp_parent(int *pipe_fd, char **argv, char **envp);
 
 #endif

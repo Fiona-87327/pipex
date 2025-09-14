@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiyawang <jiyawang@student.42.fr>          #+#  +:+       +#+        */
+/*   By: jiyan <jiyan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-13 11:43:59 by jiyawang          #+#    #+#             */
-/*   Updated: 2025-09-13 11:43:59 by jiyawang         ###   ########.fr       */
+/*   Created: 2025/09/13 11:43:59 by jiyawang          #+#    #+#             */
+/*   Updated: 2025/09/14 10:30:53 by jiyan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,23 @@ void	pp_pipex(char **argv, char **envp)
 	if (pid1 < 0)
 		p_error();
 	if (pid1 == 0)
-		pp_child1(pipe_fd, argv, envp);
+		pp_child(pipe_fd, argv, envp);
 	pid2 = fork();
 	if (pid2 < 0)
 		p_error();
 	if (pid2 == 0)
-		pp_child2(pipe_fd, argv, envp);
+		pp_parent(pipe_fd, argv, envp);
 	close(pipe_fd[READ_FD]);
 	close(pipe_fd[WRITE_FD]);
-	waitpid(pid1, &status, 0);
+	waitpid(pid1, NULL, 0);
 	waitpid(pid2, &status, 0);
+	if (WIFEXITED(status))
+		exit(WEXITSTATUS(status));
+	else
+		exit(1);
 }
 
-void	pp_child1(int *pipe_fd, char **argv, char **envp)
+void	pp_child(int *pipe_fd, char **argv, char **envp)
 {
 	int	infile;
 
@@ -65,7 +69,7 @@ void	pp_child1(int *pipe_fd, char **argv, char **envp)
 	pip_exec_cmd(argv[2], envp);
 }
 
-void	pp_child2(int *pipe_fd, char **argv, char **envp)
+void	pp_parent(int *pipe_fd, char **argv, char **envp)
 {
 	int	outfile;
 
@@ -80,4 +84,10 @@ void	pp_child2(int *pipe_fd, char **argv, char **envp)
 	close(pipe_fd[READ_FD]);
 	close(pipe_fd[WRITE_FD]);
 	pip_exec_cmd(argv[3], envp);
+}
+
+void	p_error(void)
+{
+	perror("Error");
+	exit(EXIT_FAILURE);
 }

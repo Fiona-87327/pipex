@@ -52,6 +52,22 @@ void	pp_pipex(char **argv, char **envp)
 		exit(1);
 }
 
+void	pp_parent(int *pipe_fd, char **argv, char **envp)
+{
+	int	outfile;
+
+	outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (outfile < 0)
+		p_error();
+	if (dup2(outfile, STDOUT_FILENO) == -1)
+		p_error();
+	if (dup2(pipe_fd[READ_FD], STDIN_FILENO) == -1)
+		p_error();
+	close(outfile);
+	close(pipe_fd[READ_FD]);
+	close(pipe_fd[WRITE_FD]);
+	pip_exec_cmd(argv[3], envp);
+}
 void	pp_child(int *pipe_fd, char **argv, char **envp)
 {
 	int	infile;
@@ -69,22 +85,6 @@ void	pp_child(int *pipe_fd, char **argv, char **envp)
 	pip_exec_cmd(argv[2], envp);
 }
 
-void	pp_parent(int *pipe_fd, char **argv, char **envp)
-{
-	int	outfile;
-
-	outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (outfile < 0)
-		p_error();
-	if (dup2(outfile, STDOUT_FILENO) == -1)
-		p_error();
-	if (dup2(pipe_fd[READ_FD], STDIN_FILENO) == -1)
-		p_error();
-	close(outfile);
-	close(pipe_fd[READ_FD]);
-	close(pipe_fd[WRITE_FD]);
-	pip_exec_cmd(argv[3], envp);
-}
 
 void	p_error(void)
 {

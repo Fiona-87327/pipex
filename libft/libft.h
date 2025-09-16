@@ -13,6 +13,20 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# if defined(__linux__)
+#  define PTRNULL "(nil)"
+#  define NPTRSIZE 5
+# elif defined(__APPLE__)
+#  define PTRNULL "0x0"
+#  define NPTRSIZE 3
+# endif
+
+# include <fcntl.h>
+# include <stdarg.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -70,5 +84,16 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+int					ft_printf(const char *format, ...);
+int					ft_putunsigned(unsigned int n);
+int					ft_puthexl(unsigned long n);
+int					ft_puthexu(unsigned long n);
+int					ft_putpointer(void *ptr);
+int					ft_putchar(char c);
+int					ft_putstr(char *s);
+int					ft_putnbr(int n);
+
+char				*get_next_line(int fd);
 
 #endif

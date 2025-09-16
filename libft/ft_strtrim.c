@@ -12,9 +12,6 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-
 int	ft_is_in_set(char c, const char *set)
 {
 	while (*set)

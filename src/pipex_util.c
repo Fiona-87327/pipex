@@ -6,7 +6,7 @@
 /*   By: jiyan <jiyan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 14:13:25 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/14 10:55:53 by jiyan            ###   ########.fr       */
+/*   Updated: 2025/09/17 11:47:16 by jiyan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	pip_exec_cmd(char *cmd, char **envp)
 	path = pip_get_path(args[0], envp);
 	if (!path)
 	{
-		ft_putstr_fd("Error: Command not found: ", 2);
+		ft_putstr_fd("Command not found: ", 2);
 		ft_putstr_fd(args[0], 2);
 		ft_putstr_fd("\n", 2);
 		ft_free_split(args);

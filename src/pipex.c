@@ -6,7 +6,7 @@
 /*   By: jiyan <jiyan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:43:59 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/14 10:30:53 by jiyan            ###   ########.fr       */
+/*   Updated: 2025/09/17 11:45:23 by jiyan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	pp_parent(int *pipe_fd, char **argv, char **envp)
 	close(pipe_fd[WRITE_FD]);
 	pip_exec_cmd(argv[3], envp);
 }
+
 void	pp_child(int *pipe_fd, char **argv, char **envp)
 {
 	int	infile;
@@ -84,7 +85,6 @@ void	pp_child(int *pipe_fd, char **argv, char **envp)
 	close(pipe_fd[WRITE_FD]);
 	pip_exec_cmd(argv[2], envp);
 }
-
 
 void	p_error(void)
 {

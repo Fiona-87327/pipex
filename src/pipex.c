@@ -85,9 +85,3 @@ void	pp_pipex(char **argv, char **envp)
 	else
 		exit(1);
 }
-
-void	p_error(void)
-{
-	perror("Error");
-	exit(EXIT_FAILURE);
-}

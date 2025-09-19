@@ -65,7 +65,7 @@ char	*pip_get_path(char *cmd, char **envp)
 
 static void	command_not_found_error(char **args, char *cmd_name)
 {
-	ft_putstr_fd("pipex: command not found: ", 2);
+	ft_putstr_fd("command not found: ", 2);
 	if (cmd_name)
 		ft_putstr_fd(cmd_name, 2);
 	ft_putstr_fd("\n", 2);

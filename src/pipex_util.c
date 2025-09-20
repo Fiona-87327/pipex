@@ -6,21 +6,11 @@
 /*   By: jiyan <jiyan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 14:13:25 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/17 11:47:16 by jiyan            ###   ########.fr       */
+/*   Updated: 2025/09/21 01:52:49 by jiyan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-static char	*try_cmd_direct(char *cmd)
-{
-	if (cmd[0] == '/' || (cmd[0] == '.' && cmd[1] == '/'))
-	{
-		if (access(cmd, F_OK | X_OK) == 0)
-			return (ft_strdup(cmd));
-	}
-	return (NULL);
-}
 
 static char	*search_in_paths(char *cmd, char *path_env)
 {
@@ -45,6 +35,16 @@ static char	*search_in_paths(char *cmd, char *path_env)
 	}
 	ft_free_split(route);
 	return (path);
+}
+
+static char	*try_cmd_direct(char *cmd)
+{
+	if (cmd[0] == '/' || (cmd[0] == '.' && cmd[1] == '/'))
+	{
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (ft_strdup(cmd));
+	}
+	return (NULL);
 }
 
 char	*pip_get_path(char *cmd, char **envp)

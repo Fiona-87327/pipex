@@ -6,7 +6,7 @@
 /*   By: jiyawang <jiyawang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 22:13:58 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/22 22:14:04 by jiyawang         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:00:42 by jiyawang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@ void	pp_child(int *pipe_fd, char **argv, char **envp)
 	pip_exec_cmd(argv[2], envp);
 }
 
-int	main(int argc, char **argv, char **envp)
-{
-	if (argc != 5)
-	{
-		ft_putstr_fd("Invalid number of arguments\n", 2);
-		return (1);
-	}
-	pp_pipex(argv, envp);
-	return (0);
-}
-
 void	pp_pipex(char **argv, char **envp)
 {
 	int		pipe_fd[2];
@@ -84,4 +73,15 @@ void	pp_pipex(char **argv, char **envp)
 		exit(WEXITSTATUS(status));
 	else
 		exit(1);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	if (argc != 5)
+	{
+		ft_putstr_fd("Invalid number of arguments\n", 2);
+		return (1);
+	}
+	pp_pipex(argv, envp);
+	return (0);
 }

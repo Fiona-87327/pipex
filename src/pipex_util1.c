@@ -6,7 +6,7 @@
 /*   By: jiyawang <jiyawang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 22:13:21 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/22 22:13:32 by jiyawang         ###   ########.fr       */
+/*   Updated: 2025/09/23 10:28:07 by jiyawang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_free_split(char **strs)
 
 void	p_error(void)
 {
-	perror("Error");
+	perror("Pipex");
 	exit(EXIT_FAILURE);
 }

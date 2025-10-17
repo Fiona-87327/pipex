@@ -72,7 +72,7 @@ void	pp_pipex(char **argv, char **envp)
 	if (WIFEXITED(status))
 		exit(WEXITSTATUS(status));
 	else
-		exit(1);
+		exit(EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv, char **envp)

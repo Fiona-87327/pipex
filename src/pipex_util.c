@@ -92,6 +92,5 @@ void	pip_exec_cmd(char *cmd, char **envp)
 		free(path);
 		ft_free_split(args);
 		p_error();
-		exit(126);
 	}
 }

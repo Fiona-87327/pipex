@@ -6,7 +6,7 @@
 /*   By: jiyawang <jiyawang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 22:14:12 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/22 22:14:18 by jiyawang         ###   ########.fr       */
+/*   Updated: 2025/10/18 07:56:35 by jiyawang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define PIPEX_H
 
 # include "../libft/libft.h"
-# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <sys/wait.h>
 # include <unistd.h>
 

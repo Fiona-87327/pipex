@@ -6,11 +6,17 @@
 /*   By: jiyawang <jiyawang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 22:13:58 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/10/16 18:00:42 by jiyawang         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:05:14 by jiyawang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	p_error(void)
+{
+	perror("Pipex");
+	exit(EXIT_FAILURE);
+}
 
 void	pp_parent(int *pipe_fd, char **argv, char **envp)
 {

@@ -6,11 +6,26 @@
 /*   By: jiyawang <jiyawang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 22:13:45 by jiyawang          #+#    #+#             */
-/*   Updated: 2025/09/22 22:13:51 by jiyawang         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:04:46 by jiyawang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_free_split(char **strs)
+{
+    int	i;
+
+    if (!strs)
+        return ;
+    i = 0;
+    while (strs[i])
+    {
+        free(strs[i]);
+        i++;
+    }
+    free(strs);
+}
 
 static char	*search_in_paths(char *cmd, char *path_env)
 {
@@ -37,25 +52,20 @@ static char	*search_in_paths(char *cmd, char *path_env)
 	return (path);
 }
 
-static char	*try_cmd_direct(char *cmd)
-{
-	if (cmd[0] == '/' || (cmd[0] == '.' && cmd[1] == '/'))
-	{
-		if (access(cmd, F_OK | X_OK) == 0)
-			return (ft_strdup(cmd));
-	}
-	return (NULL);
-}
-
 char	*pip_get_path(char *cmd, char **envp)
 {
-	char	*path;
-	int		i;
+	int	i;
 
+	if (!cmd || !*cmd)
+		return (NULL);
+	if (ft_strchr(cmd, '/') != NULL)
+	{
+		if (access(cmd, X_OK) == 0)
+			return (ft_strdup(cmd));
+		else
+			return (NULL);
+	}
 	i = 0;
-	path = try_cmd_direct(cmd);
-	if (path)
-		return (path);
 	while (envp[i] && ft_strnstr(envp[i], "PATH=", 5) == NULL)
 		i++;
 	if (!envp[i])
@@ -65,10 +75,14 @@ char	*pip_get_path(char *cmd, char **envp)
 
 static void	command_not_found_error(char **args, char *cmd_name)
 {
-	ft_putstr_fd("command not found: ", 2);
-	if (cmd_name)
+	ft_putstr_fd("bash: ", 2);
+	if (cmd_name && *cmd_name)
+	{
 		ft_putstr_fd(cmd_name, 2);
-	ft_putstr_fd("\n", 2);
+		ft_putstr_fd(": command not found\n", 2);
+	}
+	else
+		ft_putstr_fd(": command not found\n", 2);
 	if (args)
 		ft_free_split(args);
 	exit(127);

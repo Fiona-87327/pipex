@@ -1,6 +1,6 @@
 
 NAME = pipex
-SRCS = src/pipex.c src/pipex_util.c src/pipex_util1.c
+SRCS = src/pipex.c src/pipex_util.c
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 OBJS = $(SRCS:.c=.o)
@@ -23,7 +23,7 @@ clean:
 	rm -f $(OBJS)
 	make -C $(LIBFT_DIR) clean
 
-fclean: clean
+fclean f: clean
 	rm -f $(NAME)
 	make -C $(LIBFT_DIR) fclean
 

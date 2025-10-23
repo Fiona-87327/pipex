@@ -14,17 +14,17 @@
 
 void	ft_free_split(char **strs)
 {
-    int	i;
+	int	i;
 
-    if (!strs)
-        return ;
-    i = 0;
-    while (strs[i])
-    {
-        free(strs[i]);
-        i++;
-    }
-    free(strs);
+	if (!strs)
+		return ;
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 }
 
 static char	*search_in_paths(char *cmd, char *path_env)

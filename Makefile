@@ -6,7 +6,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I include
 
 all: $(LIBFT) $(NAME)
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJS) $(LIBFT)
 src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
+clean c:
 	rm -f $(OBJS)
 	make -C $(LIBFT_DIR) clean
 

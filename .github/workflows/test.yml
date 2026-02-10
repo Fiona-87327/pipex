@@ -1,0 +1,26 @@
+name: pipex_CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make
+
+      - name: Compile pipex
+        run: make
+
+      - name: Basic Functional Check
+        # 这一步非常加分！模拟运行一个简单的 pipe 逻辑
+        run: |
+          touch infile
+          echo "Hello Pipex" > infile
+          ./pipex infile "cat" "wc -w" outfile
+          echo "Result: $(cat outfile)"

@@ -178,25 +178,6 @@ This project reinforces:
 - ✅ Memory management in C
 - ✅ System call behavior and return values
 
-## Bonus Features (if implemented)
-
-Potential extensions:
-- Multiple pipes (> 2 commands)
-- Input/output redirection support
-- Wildcard expansion
-- Command options and flags
-- Error messages improvements
-
-## Author
-
-**jiyawang** - 42 School Student  
-Created: September 22, 2025  
-Updated: October 21, 2025
-
-## License
-
-This project is part of the 42 School curriculum and follows school policies.
-
 ## References
 
 - [pipe(2) - Linux man page](https://man7.org/linux/man-pages/man2/pipe.2.html)
@@ -204,7 +185,8 @@ This project is part of the 42 School curriculum and follows school policies.
 - [execve(2) - Linux man page](https://man7.org/linux/man-pages/man2/execve.2.html)
 - [dup2(2) - Linux man page](https://man7.org/linux/man-pages/man2/dup2.2.html)
 - [waitpid(2) - Linux man page](https://man7.org/linux/man-pages/man2/waitpid.2.html)
+  
+This project is part of the 42 School curriculum and follows school policies.
+
 
 ---
-
-**Note:** For 42 School evaluation, ensure the project compiles with no warnings or errors and passes all mandatory requirements.
